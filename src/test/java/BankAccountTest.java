@@ -14,8 +14,8 @@ public class BankAccountTest{
         bankAccount = new BankAccount("Leila","Peltier","23/07/1999",12967);
     }
 
+ // GETTERS TESTING
     @Test
-
     public void canGetFirstName(){
         String result = bankAccount.getFirstName();
         assertThat(result).isEqualTo("Leila");
@@ -47,6 +47,46 @@ public class BankAccountTest{
         int result = bankAccount.getBalance();
         assertThat(result).isEqualTo(0);
     }
+// SETTERS TESTING
+    @Test
+
+    public void canSetFirstName(){
+        bankAccount.setFirstName("Lily");
+        String result = bankAccount.getFirstName();
+        assertThat(result).isEqualTo("Lily");
+    }
+
+    @Test
+    public void canSetLastName(){
+        bankAccount.setLastName("Granger");
+        String result = bankAccount.getLastName();
+        assertThat(result).isEqualTo("Granger");
+    }
+
+    @Test
+
+    public void canSetDateOfBirth(){
+        bankAccount.setDateOfBirth("01/01/2000");
+        String result = bankAccount.getDateOfBirth();
+        assertThat(result).isEqualTo("01/01/2000");
+    }
+
+    @Test
+    public void canSetAccountNumber(){
+        bankAccount.setAccountNumber(123456);
+        int result = bankAccount.getAccountNumber();
+        assertThat(result).isEqualTo(123456);
+    }
+
+    @Test
+
+    public void canSetBalance(){
+        bankAccount.setBalance(100);
+        int result = bankAccount.getBalance();
+        assertThat(result).isEqualTo(100);
+    }
+
+
 
 
 
