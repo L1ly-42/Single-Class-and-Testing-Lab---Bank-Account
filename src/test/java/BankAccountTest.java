@@ -135,4 +135,23 @@ public class BankAccountTest{
         double result = bankAccount.getBalance();
         assertThat(result).isEqualTo(100);
     }
+
+ // Modified withdrawal tests
+
+    // Withdrawal method test
+    @Test
+    public void OnlyWithdrawsMoneyUpToOverdraft(){
+        bankAccount.setBalance(100);
+        bankAccount.withdrawalWithOverdraft(200);
+        int result = bankAccount.getBalance();
+        assertThat(result).isEqualTo(-50);
+    }
+
+    @Test
+    public void WithdrawsFullMoneyIfBalanceOverOverdraft(){
+        bankAccount.setBalance(300);
+        bankAccount.withdrawalWithOverdraft(200);
+        int result = bankAccount.getBalance();
+        assertThat(result).isEqualTo(100);
+    }
 }

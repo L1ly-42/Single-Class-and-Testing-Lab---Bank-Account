@@ -1,25 +1,27 @@
 public class BankAccount {
 
-// Instance variables
-    private String firstName ;
+    // Instance variables
+    private String firstName;
     private String lastName;
     private String dateOfBirth;
     private int accountNumber;
     private int balance;
     private String accountType;
+    private int overdraft;
 
 
-// Constructor
-    public BankAccount (String inputFirstName, String inputLastName, String inputDateOfBirth, int inputAccountNumber){
-    this.firstName = inputFirstName;
-    this.lastName = inputLastName;
-    this.dateOfBirth = inputDateOfBirth;
-    this.accountNumber = inputAccountNumber;
-    this.balance = 0;
-    this.accountType = "";
+    // Constructor
+    public BankAccount(String inputFirstName, String inputLastName, String inputDateOfBirth, int inputAccountNumber) {
+        this.firstName = inputFirstName;
+        this.lastName = inputLastName;
+        this.dateOfBirth = inputDateOfBirth;
+        this.accountNumber = inputAccountNumber;
+        this.balance = 0;
+        this.accountType = "";
+        this.overdraft = -50;
     }
 
-// Getters and Setters
+    // Getters and Setters
     public String getFirstName() {
         return firstName;
     }
@@ -73,20 +75,22 @@ public class BankAccount {
     public void deposit(int money) {
         this.balance += money;
     }
-  // withdrawal method
+
+    // withdrawal method
     public void withdrawal(int money) {
         this.balance -= money;
     }
 
-  // interest method
-    public void interest(double rate){
+    // interest method
+    public void interest(double rate) {
         rate += 1;
-        balance *= rate;}
+        balance *= rate;
+    }
 
-  // modified interest method
+    // modified interest method
 
-    public void interestByAccountType(){
-        if (this.accountType.equals("current")){
+    public void interestByAccountType() {
+        if (this.accountType.equals("current")) {
             double rate = 1.2;
             this.balance *= rate;
         }
@@ -94,6 +98,16 @@ public class BankAccount {
             double rate = 1.5;
             this.balance *= rate;
         }
+    }
 
+    // Modified withdrawal method
+    public void withdrawalWithOverdraft(int money) {
+        int possibleBalance = this.balance - money;
+        if (possibleBalance >= overdraft) {
+            this.balance = possibleBalance;
+        } else {
+            this.balance = this.overdraft;
+        }
     }
 }
+
