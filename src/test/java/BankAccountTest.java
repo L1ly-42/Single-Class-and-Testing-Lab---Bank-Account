@@ -101,9 +101,4 @@ public class BankAccountTest{
     int result = bankAccount.getBalance();
     assertThat(result).isEqualTo(-200);
 }
-
-
-
-
-
 }
