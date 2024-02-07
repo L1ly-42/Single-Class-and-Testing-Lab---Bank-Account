@@ -110,4 +110,29 @@ public class BankAccountTest{
         double result = bankAccount.getBalance();
         assertThat(result).isEqualTo(120);
     }
+    // Interest rates by account type tests
+    @Test
+    public void canPayInterestBySavingsAccount(){
+        bankAccount.setBalance(100);
+        bankAccount.setAccountType("savings");
+        bankAccount.interestByAccountType();
+        double result = bankAccount.getBalance();
+        assertThat(result).isEqualTo(150);
+    }
+    @Test
+    public void canPayInterestByCurrentAccount(){
+        bankAccount.setBalance(100);
+        bankAccount.setAccountType("current");
+        bankAccount.interestByAccountType();
+        double result = bankAccount.getBalance();
+        assertThat(result).isEqualTo(120);
+    }
+
+    @Test
+    public void doesNotPayInterestToNoAccount(){
+        bankAccount.setBalance(100);
+        bankAccount.interestByAccountType();
+        double result = bankAccount.getBalance();
+        assertThat(result).isEqualTo(100);
+    }
 }
