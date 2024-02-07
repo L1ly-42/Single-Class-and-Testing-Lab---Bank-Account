@@ -85,6 +85,22 @@ public class BankAccountTest{
         int result = bankAccount.getBalance();
         assertThat(result).isEqualTo(100);
     }
+// Deposit method test
+
+    @Test
+    public void canDepositMoney(){
+        bankAccount.deposit(200);
+        int result = bankAccount.getBalance();
+        assertThat(result).isEqualTo(200);
+    }
+
+// Withdrawal method test
+     @Test
+    public void canWithdrawMoney(){
+    bankAccount.withdrawal(200);
+    int result = bankAccount.getBalance();
+    assertThat(result).isEqualTo(-200);
+}
 
 
 
