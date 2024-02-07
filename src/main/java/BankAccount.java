@@ -6,6 +6,8 @@ public class BankAccount {
     private String dateOfBirth;
     private int accountNumber;
     private int balance;
+    private String accountType;
+
 
 // Constructor
     public BankAccount (String inputFirstName, String inputLastName, String inputDateOfBirth, int inputAccountNumber){
@@ -14,6 +16,7 @@ public class BankAccount {
     this.dateOfBirth = inputDateOfBirth;
     this.accountNumber = inputAccountNumber;
     this.balance = 0;
+    this.accountType = "";
     }
 
 // Getters and Setters
@@ -57,6 +60,14 @@ public class BankAccount {
         this.balance = balance;
     }
 
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
     // deposit method
 
     public void deposit(int money) {
@@ -70,6 +81,19 @@ public class BankAccount {
   // interest method
     public void interest(double rate){
         rate += 1;
-        balance *= rate;
+        balance *= rate;}
+
+  // modified interest method
+
+    public void interestByAccountType(){
+        if (this.accountType.equals("current")){
+            double rate = 1.2;
+            this.balance *= rate;
+        }
+        if (this.accountType.equals("savings")) {
+            double rate = 1.5;
+            this.balance *= rate;
+        }
+
     }
 }
