@@ -101,4 +101,13 @@ public class BankAccountTest{
     int result = bankAccount.getBalance();
     assertThat(result).isEqualTo(-200);
 }
+
+// Interest rate test
+    @Test
+    public void canPayInterest(){
+        bankAccount.setBalance(100);
+        bankAccount.interest(0.2);
+        double result = bankAccount.getBalance();
+        assertThat(result).isEqualTo(120);
+    }
 }
